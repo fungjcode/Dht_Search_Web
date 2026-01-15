@@ -1,0 +1,15 @@
+-- MySQL 全文搜索优化配置
+-- 需要添加到 MySQL 配置文件 my.cnf 或 my.ini
+
+[mysqld]
+# ngram 分词器配置（中文支持）
+ngram_token_size = 2          # 2-gram 分词，适合中文
+ft_min_word_len = 2           # 最小词长度
+innodb_ft_min_token_size = 2  # InnoDB 最小 token 大小
+
+# 全文索引性能优化
+innodb_ft_cache_size = 32M    # 全文索引缓存
+innodb_ft_total_cache_size = 640M  # 总缓存大小
+
+# 查询优化
+ft_query_expansion_limit = 20  # 查询扩展限制

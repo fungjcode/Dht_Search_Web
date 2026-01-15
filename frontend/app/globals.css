@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts 导入 - 精选字体组合 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --foreground-rgb: 30, 41, 59;
+  --background-start: #f8fafc;
+  --background-end: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Noto Sans SC', system-ui, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+  background-attachment: fixed;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 标题样式 - 使用 Display 字体 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', 'Noto Sans SC', system-ui, sans-serif;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+/* ============ Glassmorphism 组件 ============ */
+
+/* 玻璃卡片 */
+.glass {
+  @apply bg-white/30 backdrop-blur-xl border border-white/40 shadow-glass;
+}
+
+.glass-light {
+  @apply bg-white/20 backdrop-blur-lg border border-white/30 shadow-glass;
+}
+
+.glass-dark {
+  @apply bg-white/40 backdrop-blur-xl border border-white/50 shadow-glass-lg;
+}
+
+/* ============ Claymorphism 组件 ============ */
+
+/* 黏土卡片 */
+.clay {
+  @apply bg-white rounded-2xl shadow-clay border border-white/60;
+}
+
+.clay-light {
+  @apply bg-slate-50 rounded-xl shadow-clay border border-white/70;
+}
+
+.clay-hover {
+  @apply bg-white rounded-2xl shadow-clay hover:shadow-clay-lg transition-all duration-300;
+}
+
+/* ============ 极简风格组件 ============ */
+
+/* 极简卡片 */
+.minimal {
+  @apply bg-white rounded-xl border border-border-light shadow-minimal;
+}
+
+.minimal-hover {
+  @apply bg-white rounded-xl border border-border-light shadow-minimal hover:shadow-minimal-md hover:-translate-y-0.5 transition-all duration-250;
+}
+
+/* ============ 按钮样式 ============ */
+
+/* 主要按钮 - Glassmorphism 风格 */
+.btn-primary {
+  @apply inline-flex items-center justify-center px-6 py-2.5 bg-primary-500 text-white text-sm font-medium rounded-xl
+         shadow-minimal-md hover:shadow-minimal-lg hover:bg-primary-600 hover:-translate-y-0.5
+         transition-all duration-250 tracking-wide whitespace-nowrap;
+}
+
+/* 次要按钮 - Claymorphism 风格 */
+.btn-secondary {
+  @apply inline-flex items-center justify-center px-6 py-2.5 bg-white text-text-primary text-sm font-medium rounded-xl
+         border border-border-light shadow-clay hover:shadow-clay-lg
+         transition-all duration-250 tracking-wide whitespace-nowrap;
+}
+
+/* 幽灵按钮 */
+.btn-ghost {
+  @apply inline-flex items-center justify-center px-6 py-2.5 text-text-secondary text-sm font-medium rounded-xl
+         hover:bg-white/50 hover:text-text-primary
+         transition-all duration-250 tracking-wide whitespace-nowrap;
+}
+
+/* ============ 输入框样式 ============ */
+
+/* 玻璃输入框 */
+.input-glass {
+  @apply w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/60 rounded-xl
+         text-text-primary placeholder-text-muted
+         focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-400
+         transition-all duration-250;
+}
+
+/* 极简输入框 */
+.input-minimal {
+  @apply w-full px-4 py-3 bg-white border border-border-light rounded-lg
+         text-text-primary placeholder-text-muted
+         focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-400
+         transition-all duration-250;
+}
+
+/* ============ 标签样式 ============ */
+
+/* 玻璃标签 */
+.tag-glass {
+  @apply inline-flex items-center px-3 py-1 bg-white/40 backdrop-blur-sm rounded-full
+         text-xs font-medium text-text-secondary border border-white/30
+         transition-all duration-250;
+}
+
+.tag-glass:hover {
+  @apply bg-white/60 text-text-primary;
+}
+
+/* ============ 链接样式 ============ */
+
+.link-underline {
+  @apply text-text-secondary no-underline relative after:absolute after:bottom-0 after:left-0
+         after:w-0 after:h-px after:bg-primary-500 after:transition-all duration-250
+         hover:text-primary-500 hover:after:w-full;
+}
+
+/* ============ 动画 ============ */
+
+/* 悬浮动画 */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 6s ease-in-out 3s infinite;
+}
+
+/* 渐入动画 */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+/* 骨架屏 */
+.skeleton {
+  @apply bg-gradient-to-r from-slate-100 via-slate-200 to-slate-100 bg-[length:200%_100%] animate-[shimmer_1.5s_infinite];
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ============ 滚动条美化 ============ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full hover:bg-slate-400;
+}
+
+/* ============ 选择框美化 ============ */
+
+select {
+  @apply appearance-none bg-white cursor-pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+/* ============ 响应式优化 ============ */
+
+@media (max-width: 640px) {
+  .glass, .glass-light, .glass-dark {
+    @apply bg-white/80 backdrop-blur-md;
+  }
+
+  .clay, .clay-light {
+    @apply rounded-xl;
+  }
+}
+
+/* ============ 打印样式 ============ */
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}

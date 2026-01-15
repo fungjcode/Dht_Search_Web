@@ -1,0 +1,130 @@
+{
+    "common": {
+        "search": "Search",
+        "search_placeholder": "Search torrents...",
+        "loading": "Loading",
+        "error": "Error",
+        "submit": "Submit",
+        "cancel": "Cancel",
+        "copy": "Copy",
+        "download": "Download",
+        "back_home": "Back to Home",
+        "back_to_top": "Back to Top",
+        "check_network": "Please check API configuration or network connection",
+        "go_search": "Go Search",
+        "empty_keyword": "Please enter a search keyword",
+        "date": {
+            "today": "Today",
+            "yesterday": "Yesterday",
+            "days_ago": "{{count}} days ago",
+            "weeks_ago": "{{count}} weeks ago",
+            "months_ago": "{{count}} months ago",
+            "years_ago": "{{count}} years ago"
+        }
+    },
+    "locale": {
+        "zh": "中文",
+        "en": "English"
+    },
+    "home": {
+        "title": "DHT Search",
+        "subtitle": "Open Source Torrent Search Engine",
+        "hot_tags": {
+            "movies": "Movies",
+            "music": "Music",
+            "software": "Software",
+            "games": "Games",
+            "anime": "Anime"
+        }
+    },
+    "search": {
+        "results_count": "About {{count}} results",
+        "sort_by": "Sort by",
+        "filter": "Filter",
+        "sort_options": {
+            "time": "Newest",
+            "health": "Health",
+            "hot": "Popular",
+            "size": "Size",
+            "relevance": "Relevance"
+        },
+        "filters": {
+            "video": "Video",
+            "audio": "Audio",
+            "document": "Document",
+            "software": "Software"
+        },
+        "no_results": "No results found",
+        "try_other": "Try different keywords",
+        "prev_page": "Previous",
+        "next_page": "Next",
+        "title_searching": "Searching for",
+        "title_results": "Search Results"
+    },
+    "torrent": {
+        "basic_info": "Basic Info",
+        "size": "Size",
+        "files": "Files",
+        "health": "Health",
+        "added": "Added",
+        "last_seen": "Last Seen",
+        "hash": "Info Hash",
+        "magnet_link": "Magnet Link",
+        "file_list": "File List",
+        "copy": "Copy",
+        "copy_success": "Magnet link copied!",
+        "recommendations": "You Might Like",
+        "dmca_title": "Copyright Complaint",
+        "dmca_text": "If you believe this content infringes your copyright, please submit a DMCA complaint.",
+        "dmca_button": "Submit Complaint",
+        "files_count": "File Count",
+        "created_at": "Added On"
+    },
+    "about": {
+        "title": "About Us",
+        "overview": "Overview",
+        "overview_text": "{siteName} is a magnet link search engine based on the DHT network. We join the DHT network through the BitTorrent protocol, collecting data in real-time, and store only basic information such as file title, size, file list, and file identifier (magnet link).",
+        "overview_text2": "{siteName} does not download or store any actual resources, providing only search and indexing services. This means {siteName} is a completely legal search engine system.",
+        "usage": "How to Use",
+        "usage_text": "The results returned by {siteName} are magnet links, which does not mean you can download resources directly. You need to use download tools (such as Xunlei, QQ Xuanfeng, BitComet, etc.) to download resources.",
+        "usage_text2": "If you have any questions, please contact us via email, and we will respond within 48 hours.",
+        "disclaimer": "Disclaimer",
+        "disclaimer_text": "{siteName} does not store any resource content, only collects BT resource metadata (such as file name, file size) and magnet links (BT torrent identifiers), and provides query services.",
+        "disclaimer_text2": "If the data we collect infringes on your legal rights, please contact us via email, and we will delete or block it within 48 hours.",
+        "contact": "Contact Us",
+        "email": "Email"
+    },
+    "dmca": {
+        "title": "DMCA Copyright Complaint",
+        "notice": "Notice",
+        "notice_items": [
+            "Please ensure you own the copyright or represent the copyright owner",
+            "Provide detailed complaint reasons and copyright proof",
+            "False complaints may result in legal liability",
+            "We will process your complaint within 1-3 business days"
+        ],
+        "form": {
+            "hash": "Torrent Hash",
+            "name": "Your Name",
+            "email": "Contact Email",
+            "company": "Company/Organization (Optional)",
+            "reason": "Complaint Reason",
+            "reason_placeholder": "Please describe the infringement in detail...",
+            "proof": "Copyright Proof Link (Optional)",
+            "proof_hint": "Please provide a link to copyright proof (e.g., copyright certificate, authorization letter)"
+        },
+        "submitting": "Submitting...",
+        "success": "Complaint Submitted",
+        "success_message": "We have received your DMCA complaint and will process it within 1-3 business days."
+    },
+    "seo": {
+        "search_results_for": "Search Results: {{keyword}}",
+        "searching_for": "Searching for: {{keyword}}",
+        "torrent_detail": "Torrent Detail"
+    },
+    "footer": {
+        "about": "About",
+        "dmca": "DMCA",
+        "rights_reserved": "All Rights Reserved"
+    }
+}

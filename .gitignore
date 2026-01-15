@@ -1,0 +1,79 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+.env
+.env.local
+*.egg-info/
+dist/
+build/
+*.egg
+.claude/
+
+# Logs
+logs/
+*.log
+*.pid
+*.seed
+
+# Database
+*.db
+*.sqlite
+*.sql.gz
+
+# OS
+.DS_Store
+Thumbs.db
+*.tmp
+*~
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.project
+.pydevproject
+.settings/
+
+# Node.js
+node_modules/
+.next/
+.out/
+dist/
+build/
+
+# Frontend
+frontend/.env.local
+frontend/.env*.local
+frontend/.env.production
+frontend/.env.development
+
+# PM2
+dump.rdb
+pids/
+.pm2/
+
+# Cache
+.cache/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tsbuildinfo
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Misc
+*.bak
+*.orig
+*.rej
+*.md.bak
