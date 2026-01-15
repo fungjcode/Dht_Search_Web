@@ -105,9 +105,50 @@ npm run dev
 **生产模式（PM2）：**
 
 ```bash
+# 启动所有服务
 pm2 start ecosystem.config.js
+
+# 保存进程列表以便重启
 pm2 save
+
+# 设置开机自启（需要 root/管理员权限）
 pm2 startup
+pm2 save
+```
+
+### 5. 服务脚本
+
+项目提供了便捷的服务管理脚本：
+
+**Windows：**
+```bash
+# 启动所有服务
+start_services.bat
+
+# 定时清理（任务计划程序）
+scheduled_cleanup.bat
+```
+
+**Linux/macOS：**
+```bash
+# 启动所有服务
+./start_services.sh
+
+# 定时清理（cron）
+crontab -e
+# 添加：0 2 * * 0 /path/to/scheduled_cleanup.sh
+```
+
+**PM2 常用命令：**
+```bash
+pm2 status          # 查看所有进程
+pm2 logs            # 查看所有日志
+pm2 logs dht-crawler --lines 100  # 查看特定服务日志
+pm2 restart all     # 重启所有服务
+pm2 restart dht-api # 重启特定服务
+pm2 stop all        # 停止所有服务
+pm2 monit           # 实时监控面板
+pm2 flush           # 清空所有日志
 ```
 
 ## 项目结构
@@ -188,18 +229,61 @@ logs/
 
 ### 数据清理
 
-自动清理 2 年前的旧数据：
-
-```bash
-python cleanup_old_data.py --dry-run  # 模拟运行
-python cleanup_old_data.py            # 实际清理
-```
+系统会自动清理 2 年前的旧数据，无需手动操作。
 
 ### 健康检查
 
 ```bash
-python health_check.py                # 单次检查
-python health_check.py --loop         # 循环监控
+pm2 monit  # 实时监控面板
+pm2 status # 查看所有服务状态
+```
+
+### 后台管理 CLI 工具
+
+项目提供了命令行管理工具，用于管理种子和处理 DMCA 投诉。
+
+**使用方法：**
+
+```bash
+python admin_cli.py <命令> [参数]
+```
+
+**可用命令：**
+
+| 命令 | 说明 | 示例 |
+|------|------|------|
+| `block <hash> <reason>` | 屏蔽种子 | `python admin_cli.py block abc123 dmca` |
+| `unblock <hash>` | 解除屏蔽 | `python admin_cli.py unblock abc123` |
+| `search <关键词>` | 搜索种子 | `python admin_cli.py search 电影` |
+| `complaints list [状态]` | 查看投诉列表 | `python admin_cli.py complaints list pending` |
+| `complaints approve <id>` | 批准投诉 | `python admin_cli.py complaints approve 1` |
+| `complaints reject <id>` | 拒绝投诉 | `python admin_cli.py complaints reject 1` |
+| `stats` | 显示数据库统计 | `python admin_cli.py stats` |
+
+**屏蔽原因：**
+- `dmca` - DMCA 版权投诉
+- `copyright` - 版权侵权
+- `illegal` - 非法内容
+- `spam` - 垃圾信息
+- `other` - 其他原因
+
+**示例输出：**
+```
+$ python admin_cli.py stats
+
+📊 数据库统计信息
+
+==================================================
+种子总数:     1,234,567
+已屏蔽:       12,345
+健康种子:     987,654
+平均健康度:   75.32
+
+投诉总数:     567
+待处理:       89
+已批准:       456
+已拒绝:       22
+==================================================
 ```
 
 ## 开源协议

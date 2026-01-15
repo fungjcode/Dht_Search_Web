@@ -105,9 +105,50 @@ npm run dev
 **Production Mode (PM2):**
 
 ```bash
+# Start all services
 pm2 start ecosystem.config.js
+
+# Save process list for restart
 pm2 save
+
+# Setup startup (run as root/admin)
 pm2 startup
+pm2 save
+```
+
+### 5. Service Scripts
+
+The project includes convenient scripts for managing services:
+
+**Windows:**
+```bash
+# Start all services
+start_services.bat
+
+# Schedule weekly cleanup (Task Scheduler)
+scheduled_cleanup.bat
+```
+
+**Linux/macOS:**
+```bash
+# Start all services
+./start_services.sh
+
+# Schedule weekly cleanup (cron)
+crontab -e
+# Add: 0 2 * * 0 /path/to/scheduled_cleanup.sh
+```
+
+**PM2 Common Commands:**
+```bash
+pm2 status          # View all processes
+pm2 logs            # View all logs
+pm2 logs dht-crawler --lines 100  # View specific service
+pm2 restart all     # Restart all services
+pm2 restart dht-api # Restart specific service
+pm2 stop all        # Stop all services
+pm2 monit           # Real-time monitoring dashboard
+pm2 flush           # Clear all logs
 ```
 
 ## Project Structure
@@ -188,18 +229,61 @@ logs/
 
 ### Data Cleanup
 
-Automatically clean data older than 2 years:
-
-```bash
-python cleanup_old_data.py --dry-run  # Dry run
-python cleanup_old_data.py            # Actual cleanup
-```
+Data older than 2 years is automatically cleaned by the system. Manual cleanup is not required.
 
 ### Health Check
 
 ```bash
-python health_check.py                # Single check
-python health_check.py --loop         # Continuous monitoring
+pm2 monit  # Real-time monitoring dashboard
+pm2 status # Check all service status
+```
+
+### Admin CLI Tool
+
+The project includes an administrative command-line tool for managing torrents and DMCA complaints.
+
+**Usage:**
+
+```bash
+python admin_cli.py <command> [arguments]
+```
+
+**Commands:**
+
+| Command | Description | Example |
+|---------|-------------|---------|
+| `block <hash> <reason>` | Block a torrent | `python admin_cli.py block abc123 dmca` |
+| `unblock <hash>` | Unblock a torrent | `python admin_cli.py unblock abc123` |
+| `search <keyword>` | Search torrents | `python admin_cli.py search movie` |
+| `complaints list [status]` | List complaints | `python admin_cli.py complaints list pending` |
+| `complaints approve <id>` | Approve complaint | `python admin_cli.py complaints approve 1` |
+| `complaints reject <id>` | Reject complaint | `python admin_cli.py complaints reject 1` |
+| `stats` | Show database statistics | `python admin_cli.py stats` |
+
+**Block Reasons:**
+- `dmca` - DMCA copyright complaint
+- `copyright` - Copyright infringement
+- `illegal` - Illegal content
+- `spam` - Spam
+- `other` - Other reasons
+
+**Example Output:**
+```
+$ python admin_cli.py stats
+
+📊 Database Statistics
+
+==================================================
+Total torrents:     1,234,567
+Blocked:            12,345
+Healthy:            987,654
+Average Health:     75.32
+
+Total complaints:   567
+Pending:            89
+Approved:           456
+Rejected:           22
+==================================================
 ```
 
 ## License
